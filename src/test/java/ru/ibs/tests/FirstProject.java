@@ -1,10 +1,13 @@
 package ru.ibs.tests;
 
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+//import org.junit.After;
+//import org.junit.Assert;
+//import org.junit.Before;
+//import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -15,13 +18,17 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
+//import static org.junit.jupiter.api.AssertTrue.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 
 public class FirstProject {
     WebDriver driver = new ChromeDriver();
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20), Duration.ofSeconds(2));
 
 
-    @Before
+    @BeforeEach
     public void before() {
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
         driver.get("http://training.appline.ru/user/login");
@@ -96,13 +103,13 @@ public class FirstProject {
 
 
 //Шаг  7. Проверить, что все поля заполнены правильно
-        Assert.assertTrue("Чекбокс не включен", Boolean.parseBoolean(checkBox.getAttribute("checked")));
-        Assert.assertTrue("Выбрано неверное подразделение", division.getText().contains("Отдел внутренней разработки"));
-        Assert.assertEquals("Город выбытия указан не верно", "Россия, Омск", departureCity.getAttribute("value"));
-        Assert.assertEquals("Город прибытия указан не верно", "Россия, Мурманск", arrivalCity.getAttribute("value"));
-        Assert.assertEquals("Организация указана не верно", "(Хром) Призрачная Организация Охотников", fieldCompany.getText());
-        Assert.assertEquals("Город выбытия указан не верно", "10.11.2023", dateField.getAttribute("value"));
-        Assert.assertEquals("Город прибытия указан не верно", "10.12.2023", returnDateField.getAttribute("value"));
+        assertTrue(Boolean.parseBoolean(checkBox.getAttribute("checked")),"Чекбокс не включен");
+        assertTrue(division.getText().contains("Отдел внутренней разработки"),"Выбрано неверное подразделение");
+        assertEquals("Россия, Омск", departureCity.getAttribute("value"),"Город выбытия указан не верно");
+        assertEquals( "Россия, Мурманск", arrivalCity.getAttribute("value"),"Город прибытия указан не верно");
+        assertEquals("(Хром) Призрачная Организация Охотников", fieldCompany.getText(),"Организация указана не верно");
+        assertEquals("10.11.2023", dateField.getAttribute("value"),"Город выбытия указан не верно");
+        assertEquals("10.12.2023", returnDateField.getAttribute("value"),"Город прибытия указан не верно");
 
 // Шаг 8. Нажать "Сохранить и закрыть"
         WebElement saveAndClose = driver.findElement(By.xpath("//button[contains(text(), 'Сохранить и закрыть')]"));
@@ -112,11 +119,11 @@ public class FirstProject {
 // Шаг 9. Проверить, что на странице появилось сообщение: "Список командируемых сотрудников не может быть пустым"
 //      wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//span[@class='validation-failed']"))));
         WebElement validationMessage = driver.findElement(By.xpath("//span[@class='validation-failed']"));
-        Assert.assertEquals("Сообщение о пустом списке сотрудников отсутствует",
-                "Список командируемых сотрудников не может быть пустым", validationMessage.getText());
+        assertEquals(
+                "Список командируемых сотрудников не может быть пустым", validationMessage.getText(),"Сообщение о пустом списке сотрудников отсутствует");
     }
 
-    @After
+    @AfterEach
     public void after() {
         driver.quit();
     }
