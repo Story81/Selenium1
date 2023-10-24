@@ -1,5 +1,6 @@
 package org.example.project.pages;
 
+import io.qameta.allure.Step;
 import org.example.project.BasePage;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -35,6 +36,7 @@ public class FillFieldsOfBTripPage extends BasePage {
 
 
     // Заполнение полей командировки
+//    @Step(value = "Заполнение полей страницы создания новой командировки")
     public void FilledFieldBTrip(String inputArrivalCity, String inputDepartureCity, String departureDate, String returnDate) {
 
         divisionField.click();                         //Поле Подразделение
@@ -45,8 +47,8 @@ public class FillFieldsOfBTripPage extends BasePage {
         arrivalCity.sendKeys(inputArrivalCity);        // Заполнение поля "Город прибытия"
         departureCity.clear();
         departureCity.sendKeys(inputDepartureCity);     // Заполнение поля "Город прибытия"
-        dateField.sendKeys(departureDate);              // Заполнение поля "Планируемая дата выезда*" "04.03.2023"
-        returnDateField.sendKeys(returnDate);           //Заполнение поля "Планируемая дата возвращения "04.04.2023"
+        dateField.sendKeys(departureDate);              // Заполнение поля "Планируемая дата выезда*"
+        returnDateField.sendKeys(returnDate);           //Заполнение поля "Планируемая дата возвращения
         returnDateField.sendKeys(Keys.ESCAPE);          // закрытие календаря
     }
 }

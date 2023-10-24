@@ -1,12 +1,10 @@
 package org.example.project.pages;
 
+import io.qameta.allure.Step;
 import org.example.project.BasePage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.Properties;
-
-import static org.example.project.properties.TestProperties.getInstance;
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
 
 public class LoginPage extends BasePage {
@@ -22,12 +20,14 @@ public class LoginPage extends BasePage {
     @FindBy(xpath = "//h1[@class='oro-subtitle']")
     private WebElement subtitle;
 
-    public void enterLoginAndPassword(String login, String password ) {
+//    @Step(value = "Ввести значения логина и пароля")
+    public void enterLoginAndPassword(String login, String password) {
         wait.until(visibilityOf(loginFormWindow));
         loginRow.sendKeys(login);
         passwordRow.sendKeys(password);
     }
 
+//    @Step(value = "Подтверждение входа")
     public void submitClick() {
         submitButton.click();
         wait.until(visibilityOf(subtitle));

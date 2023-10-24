@@ -1,6 +1,8 @@
 package org.example.project.pages;
 
+import io.qameta.allure.Step;
 import org.example.project.BasePage;
+import org.junit.jupiter.api.condition.DisabledIfSystemProperties;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -18,12 +20,14 @@ public class MainPage extends BasePage {
     @FindBy(xpath = "//h1[@class='user-name']")
     private WebElement headerCreateBusinessTrip;
 
+//    @Step(value = "Клик на кнопку Расходы")                          // Шаг 3. В выплывающем окне раздела Расходы нажать на Командировки
     public void costsClick() {
         costsBtn.click();
     }
+//    @Step(value = "Нажать на \"Создать командировку\"")
     public void assignmentClick() {
         wait.until(visibilityOf(dropDownList));
-        assignmentBtn.click();                                          // Шаг 3. В выплывающем окне раздела Расходы нажать на Командировки
+        assignmentBtn.click();
         loading();
         createBusinessTripBtn.click();                                 //Шаг 4. Нажать на "Создать командировку"
         loading();

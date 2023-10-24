@@ -1,5 +1,6 @@
 package org.example.project.pages;
 
+import io.qameta.allure.Step;
 import org.example.project.BasePage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -34,6 +35,7 @@ public class AssertFilledFieldsBTripPage extends BasePage {
     @FindBy(xpath = "//span[@class='validation-failed']")
     private WebElement validationMessage;
 
+//    @Step
     public void assertFilledField() {
         assertAll("!!! Поле заполнено неверно: ",
                 () -> assertEquals("Отдел внутренней разработки",
@@ -52,11 +54,13 @@ public class AssertFilledFieldsBTripPage extends BasePage {
                         returnDateField.getAttribute("value"), "Даты прибытия"));
     }
 
+//    @Step(value = "Нажать на кнопку'Сохранить' ")
     public void saveAndClose() {
         saveAndCloseBtn.click();
         loading();
     }
 
+//    @Step (value = "Проверка отображения сообщения о незаполненном поле")
     public void assertMessage() {
         validationMessage.click();
         String validation_failed = "Список командируемых сотрудников не может быть пустым";

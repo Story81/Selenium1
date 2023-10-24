@@ -1,5 +1,6 @@
 package ru.ibs.tests;
 
+import io.qameta.allure.Description;
 import org.example.project.steps.LoginSteps;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -16,6 +17,7 @@ public class SecondTest {
 
 
     @Test
+    @Description("Тест проверяет,что нельзя оформить командировку при незаполненных полях")
     public void test() {
 
         loginSteps
