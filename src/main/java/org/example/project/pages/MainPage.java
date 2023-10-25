@@ -1,8 +1,6 @@
 package org.example.project.pages;
 
-import io.qameta.allure.Step;
 import org.example.project.BasePage;
-import org.junit.jupiter.api.condition.DisabledIfSystemProperties;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -17,18 +15,22 @@ public class MainPage extends BasePage {
     private WebElement assignmentBtn;
     @FindBy(xpath = "//div[@class='pull-left btn-group icons-holder']/a[text()='Создать командировку']")
     private WebElement createBusinessTripBtn;
-    @FindBy(xpath = "//h1[@class='user-name']")
+    @FindBy(xpath = "//h1[@class='user-name1']")       //УБРАТЬ 1  из  названия класса 'user-name1'!!!!!!!!!!!!!!!!!!!!!
     private WebElement headerCreateBusinessTrip;
 
-//    @Step(value = "Клик на кнопку Расходы")                          // Шаг 3. В выплывающем окне раздела Расходы нажать на Командировки
-    public void costsClick() {
+
+    public void costsClick() {                                        // Нажать на Расходы
         costsBtn.click();
     }
-//    @Step(value = "Нажать на \"Создать командировку\"")
-    public void assignmentClick() {
+
+
+    public void assignmentBtnClick() {
         wait.until(visibilityOf(dropDownList));
-        assignmentBtn.click();
+        assignmentBtn.click();                                        // Шаг 3. В выплывающем окне раздела Расходы нажать на Командировки
         loading();
+    }
+
+    public void assignmentCreate() {
         createBusinessTripBtn.click();                                 //Шаг 4. Нажать на "Создать командировку"
         loading();
         wait.until(visibilityOf(headerCreateBusinessTrip));            // Шаг 5. Проверить наличие на странице заголовка "Создать командировку"

@@ -1,6 +1,5 @@
 package org.example.project.pages;
 
-import io.qameta.allure.Step;
 import org.example.project.BasePage;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -34,16 +33,18 @@ public class FillFieldsOfBTripPage extends BasePage {
     @FindBy(xpath = "//input[contains(@id, 'date_selector_crm_business_trip_returnDatePlan')]")
     private WebElement returnDateField;
 
-
-    // Заполнение полей командировки
-//    @Step(value = "Заполнение полей страницы создания новой командировки")
-    public void FilledFieldBTrip(String inputArrivalCity, String inputDepartureCity, String departureDate, String returnDate) {
-
+    public void filledFieldBTripDivision() {
         divisionField.click();                         //Поле Подразделение
+    }
+
+    public void filledFieldBTripCompany() {
         listOfCompanies.click();                       //кнопка Выбрать организацию из списка
         fieldCompany.click();
         nameCompany.click();
         checkBoxTickets.click();                       //Проставление чек-бокса "Заказ билетов"
+    }
+
+    public void filledFieldBTrip(String inputArrivalCity, String inputDepartureCity, String departureDate, String returnDate) {
         arrivalCity.sendKeys(inputArrivalCity);        // Заполнение поля "Город прибытия"
         departureCity.clear();
         departureCity.sendKeys(inputDepartureCity);     // Заполнение поля "Город прибытия"

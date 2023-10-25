@@ -4,10 +4,17 @@ import io.qameta.allure.Step;
 import org.example.project.pages.LoginPage;
 
 public class LoginSteps {
-    @Step ("Страница авторизации")
-    public MainPageSteps login(String login, String password) {
-        LoginPage loginPage = new LoginPage();
+
+    final LoginPage loginPage = new LoginPage();
+
+    @Step("Страница авторизации: ввод логина и пароля")
+    public LoginSteps login(String login, String password) {
         loginPage.enterLoginAndPassword(login, password);
+        return new LoginSteps();
+    }
+
+    @Step("Страница авторизации: нажатие на кнопку подтверждения")
+    public MainPageSteps submitBtnClick() {
         loginPage.submitClick();
         return new MainPageSteps();
     }
