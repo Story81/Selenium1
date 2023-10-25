@@ -15,7 +15,7 @@ public class MainPage extends BasePage {
     private WebElement assignmentBtn;
     @FindBy(xpath = "//div[@class='pull-left btn-group icons-holder']/a[text()='Создать командировку']")
     private WebElement createBusinessTripBtn;
-    @FindBy(xpath = "//h1[@class='user-name1']")       //УБРАТЬ 1  из  названия класса 'user-name1'!!!!!!!!!!!!!!!!!!!!!
+    @FindBy(xpath = "//h1[@class='user-name']")
     private WebElement headerCreateBusinessTrip;
 
 
